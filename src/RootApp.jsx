@@ -4,9 +4,10 @@ import App from './App';
 import CourtApp from './components/court/CourtApp';
 import ElectionApp from './components/election/ElectionApp';
 import BudgetApp from './components/budget/BudgetApp';
+import ImpeachmentApp from './components/impeachment/ImpeachmentApp';
 
 export default function RootApp() {
-  const [module, setModule] = useState(null); // null | 'bill' | 'court' | 'election' | 'budget'
+  const [module, setModule] = useState(null); // null | 'bill' | 'court' | 'election' | 'budget' | 'impeachment'
 
   if (module === 'bill') {
     return <App onBack={() => setModule(null)} />;
@@ -22,6 +23,10 @@ export default function RootApp() {
 
   if (module === 'budget') {
     return <BudgetApp onBack={() => setModule(null)} />;
+  }
+
+  if (module === 'impeachment') {
+    return <ImpeachmentApp onBack={() => setModule(null)} />;
   }
 
   return <ModuleSelector onSelect={setModule} />;

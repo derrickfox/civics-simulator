@@ -55,6 +55,18 @@ export default function ModuleSelector({ onSelect }) {
                 Navigate a $7 trillion budget from White House proposal to presidential signature.
               </p>
             </div>
+            <div className="ms-card__badge ms-card__badge--play">PLAY</div>
+          </button>
+
+          {/* Impeachment Module */}
+          <button className="ms-card ms-card--impeachment" onClick={() => onSelect('impeachment')}>
+            <div className="ms-card__icon">🔨</div>
+            <div className="ms-card__content">
+              <h2 className="ms-card__title">How Presidential Impeachment Works</h2>
+              <p className="ms-card__subtitle">
+                Lead an impeachment from whistleblower complaint to Senate conviction vote.
+              </p>
+            </div>
             <div className="ms-card__badge ms-card__badge--new">
               <span className="ms-badge-pulse" />
               NEW
