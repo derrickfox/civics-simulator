@@ -9077,3 +9077,60 @@ button {
   color: #374151;
   margin-bottom: 3px;
 }
+
+/* ============================================================
+   IMPEACHMENT SCENES — fill stage width
+   ============================================================ */
+
+/* Spread children across the full stage */
+.im-complaint-stage,
+.im-invest-stage,
+.im-hearing-stage,
+.im-articles-stage,
+.im-committee-stage,
+.im-debate-stage,
+.im-housevote-stage,
+.im-senate-trial-stage,
+.im-deliberation-stage,
+.im-senatevote-stage {
+  justify-content: space-evenly;
+}
+
+/* Complaint scene */
+.im-capitol { flex: 1; align-items: center; }
+.im-document { flex: 1; width: auto; max-width: 180px; }
+
+/* Investigation scene */
+.im-inv-office { flex: 1; width: auto; min-width: 90px; max-width: 140px; }
+.im-subpoena-stack { flex: 1; align-items: center; }
+
+/* Hearings scene */
+.im-hearing-room { flex: 1; align-items: center; }
+
+/* Articles scene */
+.im-drafting-table { flex: 1; width: auto; min-width: 100px; max-width: 160px; }
+.im-constitution { flex: 1; max-width: 180px; }
+
+/* Committee vote scene */
+.im-committee-room { flex: 1; align-items: center; }
+.im-vote-tally { flex: 1; max-width: 200px; }
+
+/* House debate scene */
+.im-house-floor { flex: 1; align-items: center; }
+
+/* House vote scene */
+.im-vote-board { flex: 1; max-width: 200px; }
+.im-whip-board { flex: 1; max-width: 180px; }
+
+/* Senate trial scene */
+.im-senate-chamber { flex: 1; align-items: center; }
+.im-senate__gallery { flex: 1; justify-content: center; max-width: 120px; }
+
+/* Deliberation scene */
+.im-delib-room { flex: 1; justify-content: center; }
+.im-count-display { flex: 1; max-width: 180px; }
+
+/* Senate vote scene */
+.im-rostrum { flex: 1; max-width: 120px; }
+.im-roll-call { flex: 1; max-width: 140px; }
+.im-final-threshold { flex: 2; }
