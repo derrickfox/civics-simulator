@@ -67,6 +67,18 @@ export default function ModuleSelector({ onSelect }) {
                 Lead an impeachment from whistleblower complaint to Senate conviction vote.
               </p>
             </div>
+            <div className="ms-card__badge ms-card__badge--play">PLAY</div>
+          </button>
+
+          {/* Redistricting Module */}
+          <button className="ms-card ms-card--redistricting" onClick={() => onSelect('redistricting')}>
+            <div className="ms-card__icon">🗺️</div>
+            <div className="ms-card__content">
+              <h2 className="ms-card__title">How Congressional Redistricting Works</h2>
+              <p className="ms-card__subtitle">
+                Draw district lines after the census — balancing law, politics, and voters' rights.
+              </p>
+            </div>
             <div className="ms-card__badge ms-card__badge--new">
               <span className="ms-badge-pulse" />
               NEW
