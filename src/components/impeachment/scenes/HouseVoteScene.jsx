@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const choiceMeta = {
-  'party-whip':             { icon: '🗳️', tags: [{ label: '+Senate', color: 'blue' }, { label: '−Bipartisan', color: 'red' }] },
+  'party-whip':               { icon: '🗳️', tags: [{ label: '+Senate', color: 'blue' }, { label: '−Bipartisan', color: 'red' }] },
   'persuade-republicans-vote':{ icon: '🤝', tags: [{ label: '+Bipartisan', color: 'green' }, { label: '+Senate', color: 'blue' }] },
-  'protect-moderates':      { icon: '🛡️', tags: [{ label: '+Moderate', color: 'blue' }, { label: '−Integrity', color: 'red' }] },
+  'protect-moderates':        { icon: '🛡️', tags: [{ label: '+Moderate', color: 'blue' }, { label: '−Integrity', color: 'red' }] },
 };
 
 export default function HouseVoteScene({ stage, onChoiceSelect }) {
@@ -18,29 +18,45 @@ export default function HouseVoteScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-housevote-stage">
-        {/* Vote board */}
-        <div className="im-vote-board">
-          <div className="im-vote-board__title">ARTICLE I — FINAL PASSAGE</div>
-          <div className="im-vote-board__counts">
-            <div className="im-vote-board__yea">
-              <div className="im-vote-board__num">221</div>
-              <div className="im-vote-board__lbl">YEA</div>
+        {/* Left: Whip count */}
+        <div className="im-scene-panel">
+          <div className="im-panel-label">WHIP COUNT</div>
+          <div className="im-whip-row-big"><span className="im-whip-big im-whip-big--yes">221</span><span className="im-whip-lbl">committed yes</span></div>
+          <div className="im-whip-row-big"><span className="im-whip-big im-whip-big--soft">3</span><span className="im-whip-lbl">soft yes</span></div>
+          <div className="im-whip-row-big"><span className="im-whip-big im-whip-big--gop">2</span><span className="im-whip-lbl">GOP persuadable</span></div>
+        </div>
+
+        {/* Center: Vote board */}
+        <div className="im-scene-panel im-scene-panel--center">
+          <div className="im-hvote-board">
+            <div className="im-hvote-board__title">FINAL PASSAGE</div>
+            <div className="im-hvote-board__row">
+              <div className="im-hvote-board__col im-hvote-board__col--yea">
+                <div className="im-hvote-board__num">221</div>
+                <div className="im-hvote-board__lbl">YEA</div>
+              </div>
+              <div className="im-hvote-board__col im-hvote-board__col--nay">
+                <div className="im-hvote-board__num">213</div>
+                <div className="im-hvote-board__lbl">NAY</div>
+              </div>
             </div>
-            <div className="im-vote-board__divider"/>
-            <div className="im-vote-board__nay">
-              <div className="im-vote-board__num">213</div>
-              <div className="im-vote-board__lbl">NAY</div>
-            </div>
+            <div className="im-hvote-board__threshold">218 needed to pass</div>
           </div>
-          <div className="im-vote-board__threshold">218 needed</div>
+          <div className="im-panel-label" style={{ marginTop: 8 }}>Majority achieved</div>
         </div>
-        {/* Whip count */}
-        <div className="im-whip-board">
-          <div className="im-whip-board__label">WHIP COUNT</div>
-          <div className="im-whip-row"><span className="im-whip__committed">221 committed</span></div>
-          <div className="im-whip-row"><span className="im-whip__soft">3 soft yes</span></div>
-          <div className="im-whip-row"><span className="im-whip__gop">2 GOP persuadable</span></div>
+
+        {/* Right: Historical context */}
+        <div className="im-scene-panel">
+          <div className="im-stat-box im-stat-box--danger">
+            <div className="im-stat-box__num">3×</div>
+            <div className="im-stat-box__label">Presidents ever<br/>impeached by House</div>
+          </div>
+          <div className="im-stat-box">
+            <div className="im-stat-box__num">0×</div>
+            <div className="im-stat-box__label">Presidents ever<br/>convicted by Senate</div>
+          </div>
         </div>
+
         <div className="im-vote-badge">⚡ HISTORIC VOTE IMMINENT</div>
       </div>
 

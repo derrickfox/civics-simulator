@@ -6,6 +6,8 @@ const choiceMeta = {
   'last-negotiation': { icon: '🚶', tags: [{ label: '+Senate', color: 'green' }, { label: '+Bipartisan', color: 'blue' }] },
 };
 
+const GUILTY = ['GUILTY', 'NOT GUILTY', 'GUILTY', 'GUILTY', 'NOT GUILTY', 'GUILTY', 'NOT GUILTY', 'GUILTY'];
+
 export default function SenateVoteScene({ stage, onChoiceSelect }) {
   const [phase, setPhase] = useState(0);
   const [selectedId, setSelectedId] = useState(null);
@@ -18,31 +20,48 @@ export default function SenateVoteScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-senatevote-stage">
-        {/* Senate rostrum */}
-        <div className="im-rostrum">
-          <div className="im-rostrum__figure">
-            <div className="im-rostrum__head"/>
-            <div className="im-rostrum__robe"/>
+        {/* Left: Chief Justice */}
+        <div className="im-scene-panel">
+          <div className="im-cj-big">
+            <div className="im-cj-big__head"/>
+            <div className="im-cj-big__robe"/>
           </div>
-          <div className="im-rostrum__stand"/>
-          <div className="im-rostrum__label">Chief Justice Roberts</div>
+          <div className="im-panel-label">Chief Justice</div>
+          <div className="im-panel-sub">"How say you?"</div>
         </div>
-        {/* Senator rows calling roll */}
-        <div className="im-roll-call">
-          {['GUILTY', 'NOT GUILTY', 'GUILTY', 'NOT GUILTY', 'GUILTY', 'GUILTY'].map((v,i) => (
-            <div key={i} className={`im-roll__entry im-roll__entry--${v === 'GUILTY' ? 'guilty' : 'acquit'}`}>
-              {v}
+
+        {/* Center: Roll call */}
+        <div className="im-scene-panel im-scene-panel--center">
+          <div className="im-panel-label">SENATE ROLL CALL</div>
+          <div className="im-rollcall-list">
+            {GUILTY.map((v, i) => (
+              <div key={i} className={`im-rollcall__entry im-rollcall__entry--${v === 'GUILTY' ? 'guilty' : 'acquit'}`}>
+                {v}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Threshold bar */}
+        <div className="im-scene-panel">
+          <div className="im-panel-label">CONVICTION THRESHOLD</div>
+          <div className="im-svote-bar-wrap">
+            <div className="im-svote-bar">
+              <div className="im-svote-bar__fill"/>
+              <div className="im-svote-bar__marker">
+                <span>67</span>
+              </div>
             </div>
-          ))}
-        </div>
-        {/* Final threshold */}
-        <div className="im-final-threshold">
-          <div className="im-threshold__bar-bg">
-            <div className="im-threshold__bar-fill"/>
-            <div className="im-threshold__marker">67</div>
+            <div className="im-svote-bar__labels">
+              <span>0</span><span>100</span>
+            </div>
           </div>
-          <div className="im-threshold__label">Two-thirds threshold</div>
+          <div className="im-stat-box im-stat-box--danger" style={{ marginTop: 12, width: '100%' }}>
+            <div className="im-stat-box__num">⅔</div>
+            <div className="im-stat-box__label">Supermajority required<br/>Never achieved in history</div>
+          </div>
         </div>
+
         <div className="im-final-badge">🔨 History hangs in the balance</div>
       </div>
 

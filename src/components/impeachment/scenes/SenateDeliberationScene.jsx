@@ -18,29 +18,52 @@ export default function SenateDeliberationScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-deliberation-stage">
-        {/* Closed-door room */}
-        <div className="im-delib-room">
-          <div className="im-delib__door">
-            <div className="im-door__panel"/>
-            <div className="im-door__knob"/>
-            <div className="im-door__sign">CLOSED SESSION</div>
+        {/* Left: Current count */}
+        <div className="im-scene-panel">
+          <div className="im-panel-label">SENATE WHIP COUNT</div>
+          <div className="im-delib-count">
+            <div className="im-delib-num im-delib-num--yes">55</div>
+            <div className="im-delib-lbl">leaning convict</div>
           </div>
-          <div className="im-delib__table">
-            {[0,1,2,3,4].map(i => (
-              <div key={i} className={`im-delib__senator${i === 2 ? ' im-delib__senator--undecided' : ''}`}>
-                <div className="im-delib__head"/>
-                <div className="im-delib__body"/>
-                {i === 2 && <div className="im-delib__question">?</div>}
-              </div>
-            ))}
+          <div className="im-delib-count">
+            <div className="im-delib-num im-delib-num--no">42</div>
+            <div className="im-delib-lbl">leaning acquit</div>
+          </div>
+          <div className="im-delib-count">
+            <div className="im-delib-num im-delib-num--unk">3</div>
+            <div className="im-delib-lbl">undecided</div>
           </div>
         </div>
-        {/* Count display */}
-        <div className="im-count-display">
-          <div className="im-count__row"><span className="im-count__num im-count__num--yes">55</span><span className="im-count__lbl"> leaning convict</span></div>
-          <div className="im-count__row"><span className="im-count__num im-count__num--no">42</span><span className="im-count__lbl"> leaning acquit</span></div>
-          <div className="im-count__row"><span className="im-count__num im-count__num--unk">3</span><span className="im-count__lbl"> undecided</span></div>
+
+        {/* Center: Gap visualization */}
+        <div className="im-scene-panel im-scene-panel--center">
+          <div className="im-gap-visual">
+            <div className="im-gap-visual__label">Need 67 to convict</div>
+            <div className="im-gap-visual__bar">
+              <div className="im-gap-visual__fill" style={{ width: '55%' }}/>
+              <div className="im-gap-visual__marker">67</div>
+            </div>
+            <div className="im-gap-visual__current">55 leaning yes</div>
+          </div>
+          <div className="im-stat-box im-stat-box--danger" style={{ marginTop: 12 }}>
+            <div className="im-stat-box__num">−12</div>
+            <div className="im-stat-box__label">Votes short of<br/>conviction threshold</div>
+          </div>
         </div>
+
+        {/* Right: Undecided senators */}
+        <div className="im-scene-panel">
+          <div className="im-panel-label">UNDECIDED SENATORS</div>
+          {[1, 2, 3].map(i => (
+            <div key={i} className="im-undecided-senator">
+              <div className="im-undecided-senator__head"/>
+              <div className="im-undecided-senator__body"/>
+              <div className="im-undecided-senator__q">?</div>
+            </div>
+          ))}
+          <div className="im-panel-sub">72 hours to decide</div>
+        </div>
+
         <div className="im-math-badge">🔢 Need 67 — 12 short</div>
       </div>
 

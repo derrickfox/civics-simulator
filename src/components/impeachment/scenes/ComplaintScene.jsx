@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const choiceMeta = {
-  'immediate-referral':    { icon: '⚡', tags: [{ label: '+Evidence', color: 'green' }, { label: '+Public', color: 'blue' }] },
+  'immediate-referral':        { icon: '⚡', tags: [{ label: '+Evidence', color: 'green' }, { label: '+Public', color: 'blue' }] },
   'preliminary-investigation': { icon: '🔍', tags: [{ label: '+Evidence', color: 'green' }, { label: '+Legal', color: 'blue' }] },
-  'bipartisan-inquiry':    { icon: '🫱🫲', tags: [{ label: '+Bipartisan', color: 'green' }, { label: '+Integrity', color: 'blue' }] },
+  'bipartisan-inquiry':        { icon: '🫱🫲', tags: [{ label: '+Bipartisan', color: 'green' }, { label: '+Integrity', color: 'blue' }] },
 };
 
 export default function ComplaintScene({ stage, onChoiceSelect }) {
@@ -18,22 +18,43 @@ export default function ComplaintScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-complaint-stage">
-        {/* Capitol building */}
-        <div className="im-capitol">
-          <div className="im-capitol__dome">🏛️</div>
-          <div className="im-capitol__body">
-            <div className="im-capitol__cols">{[0,1,2,3,4].map(i=><div key={i} className="im-capitol__col"/>)}</div>
+        {/* Left: Capitol */}
+        <div className="im-scene-panel">
+          <div className="im-capitol-big">🏛️</div>
+          <div className="im-panel-label">U.S. Capitol</div>
+          <div className="im-panel-sub">House Intelligence<br/>Committee</div>
+        </div>
+
+        {/* Center: Whistleblower document */}
+        <div className="im-scene-panel im-scene-panel--center">
+          <div className="im-wbdoc">
+            <div className="im-wbdoc__stamp">⚠️ WHISTLEBLOWER COMPLAINT</div>
+            <div className="im-wbdoc__line"/>
+            <div className="im-wbdoc__line"/>
+            <div className="im-wbdoc__line im-wbdoc__line--short"/>
+            <div className="im-wbdoc__classified">CONFIDENTIAL</div>
+            <div className="im-wbdoc__line"/>
+            <div className="im-wbdoc__line im-wbdoc__line--short"/>
+          </div>
+          <div className="im-panel-label">Credible Complaint Filed</div>
+        </div>
+
+        {/* Right: Stakes */}
+        <div className="im-scene-panel">
+          <div className="im-stat-box">
+            <div className="im-stat-box__num">Art. I</div>
+            <div className="im-stat-box__label">Sole power to impeach</div>
+          </div>
+          <div className="im-stat-box im-stat-box--warn">
+            <div className="im-stat-box__num">218</div>
+            <div className="im-stat-box__label">House votes needed</div>
+          </div>
+          <div className="im-stat-box im-stat-box--hi">
+            <div className="im-stat-box__num">67</div>
+            <div className="im-stat-box__label">Senate votes to convict</div>
           </div>
         </div>
-        {/* Whistleblower document */}
-        <div className="im-document im-document--float">
-          <div className="im-document__stamp">⚠️ WHISTLEBLOWER</div>
-          <div className="im-document__line"/>
-          <div className="im-document__line im-document__line--short"/>
-          <div className="im-document__line"/>
-          <div className="im-document__classified">CONFIDENTIAL</div>
-        </div>
-        {/* Ticker */}
+
         <div className="im-ticker">
           <span>📺 BREAKING: Whistleblower complaint alleges presidential abuse of power</span>
         </div>

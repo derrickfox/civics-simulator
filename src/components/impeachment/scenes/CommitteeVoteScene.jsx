@@ -6,6 +6,9 @@ const choiceMeta = {
   'procedural-maneuver': { icon: '⏩', tags: [{ label: '+Speed', color: 'blue' }, { label: '−Integrity', color: 'red' }] },
 };
 
+const DEM_MEMBERS = 23;
+const REP_MEMBERS = 14;
+
 export default function CommitteeVoteScene({ stage, onChoiceSelect }) {
   const [phase, setPhase] = useState(0);
   const [selectedId, setSelectedId] = useState(null);
@@ -18,29 +21,50 @@ export default function CommitteeVoteScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-committee-stage">
-        {/* Committee chamber */}
-        <div className="im-committee-room">
-          <div className="im-committee__dais">
-            {[0,1,2,3,4,5,6].map(i => (
-              <div key={i} className={`im-committee__seat${i === 6 ? ' im-committee__seat--highlight' : ''}`}>
-                <div className="im-committee__head"/>
-                <div className="im-committee__body"/>
-              </div>
+        {/* Left: Committee composition */}
+        <div className="im-scene-panel">
+          <div className="im-panel-label" style={{ marginBottom: 8 }}>HOUSE JUDICIARY COMMITTEE</div>
+          <div className="im-cmember-grid">
+            {Array.from({ length: DEM_MEMBERS }).map((_, i) => (
+              <div key={`d${i}`} className="im-cmember im-cmember--dem"/>
+            ))}
+            {Array.from({ length: REP_MEMBERS }).map((_, i) => (
+              <div key={`r${i}`} className={`im-cmember im-cmember--rep${i >= REP_MEMBERS - 2 ? ' im-cmember--undecided' : ''}`}/>
             ))}
           </div>
-          <div className="im-committee__nameplate">HOUSE JUDICIARY COMMITTEE</div>
-        </div>
-        {/* Vote tally */}
-        <div className="im-vote-tally">
-          <div className="im-tally__label">COMMITTEE VOTE</div>
-          <div className="im-tally__row">
-            <span className="im-tally__yes">23 YES</span>
-            <span className="im-tally__divider">·</span>
-            <span className="im-tally__no">14 NO</span>
+          <div className="im-chamber-seats__legend" style={{ marginTop: 6 }}>
+            <span className="im-legend__dem">● Dem</span>
+            <span className="im-legend__rep">● Rep</span>
+            <span style={{ color: '#f59e0b', fontSize: 10, fontWeight: 700 }}>● Undecided</span>
           </div>
-          <div className="im-tally__pending">2 UNDECIDED</div>
         </div>
-        {/* Republican badge */}
+
+        {/* Center: Vote tally */}
+        <div className="im-scene-panel im-scene-panel--center">
+          <div className="im-big-tally">
+            <div className="im-big-tally__yes">23</div>
+            <div className="im-big-tally__label">YES</div>
+          </div>
+          <div className="im-big-tally__vs">—</div>
+          <div className="im-big-tally">
+            <div className="im-big-tally__no">14</div>
+            <div className="im-big-tally__label">NO</div>
+          </div>
+          <div className="im-undecided-badge">2 Republicans undecided</div>
+        </div>
+
+        {/* Right: Context */}
+        <div className="im-scene-panel">
+          <div className="im-stat-box im-stat-box--hi">
+            <div className="im-stat-box__num">1974</div>
+            <div className="im-stat-box__label">Nixon: 6 GOP members<br/>joined majority</div>
+          </div>
+          <div className="im-stat-box im-stat-box--warn">
+            <div className="im-stat-box__num">Cover</div>
+            <div className="im-stat-box__label">Bipartisan vote gives<br/>Senate cover</div>
+          </div>
+        </div>
+
         <div className="im-gop-badge">🔴 2 Republicans persuadable</div>
       </div>
 

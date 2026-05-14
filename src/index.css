@@ -9134,3 +9134,762 @@ button {
 .im-rostrum { flex: 1; max-width: 120px; }
 .im-roll-call { flex: 1; max-width: 140px; }
 .im-final-threshold { flex: 2; }
+
+/* ============================================================
+   HOUSE DEBATE SCENE — new element styles
+   ============================================================ */
+.im-debate-stage {
+  align-items: stretch;
+  padding: 20px 24px;
+  min-height: 200px;
+}
+
+.im-podium-section {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.im-podium__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.im-podium__head {
+  width: 22px; height: 22px;
+  background: #fde68a;
+  border-radius: 50%;
+  border: 2px solid #d97706;
+}
+.im-podium__body {
+  width: 26px; height: 36px;
+  background: #1e3a5f;
+  border-radius: 4px 4px 0 0;
+}
+.im-podium__stand {
+  width: 56px; height: 12px;
+  background: #92400e;
+  border-radius: 3px;
+}
+.im-podium__label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+  margin-top: 2px;
+}
+
+.im-chamber-seats {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.im-chamber-seats__label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #374151;
+}
+.im-chamber-seats__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  max-width: 280px;
+}
+.im-seat {
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.im-seat--dem { background: #3b82f6; }
+.im-seat--rep { background: #ef4444; }
+.im-chamber-seats__legend {
+  display: flex;
+  gap: 12px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.im-legend__dem { color: #3b82f6; }
+.im-legend__rep { color: #ef4444; }
+
+.im-debate-stats {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+.im-debate-stat {
+  text-align: center;
+  background: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  padding: 6px 14px;
+  border: 1px solid #fca5a5;
+}
+.im-debate-stat__num {
+  font-size: 20px;
+  font-weight: 900;
+  color: #7f1d1d;
+  line-height: 1;
+}
+.im-debate-stat__label {
+  font-size: 9px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-top: 2px;
+}
+.im-debate-stat--live .im-debate-stat__num { color: #dc2626; }
+
+/* ============================================================
+   IMPEACHMENT SCENES — shared 3-panel system
+   ============================================================ */
+
+/* All stages: stretch full width, row layout */
+.im-complaint-stage,
+.im-invest-stage,
+.im-hearing-stage,
+.im-articles-stage,
+.im-committee-stage,
+.im-housevote-stage,
+.im-senate-trial-stage,
+.im-deliberation-stage,
+.im-senatevote-stage {
+  flex-direction: row;
+  align-items: stretch;
+  padding: 18px 20px;
+  min-height: 210px;
+  gap: 12px;
+  justify-content: stretch;
+}
+
+/* Each panel fills equal space, centered content */
+.im-scene-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+}
+.im-scene-panel--center {
+  flex: 1.4;
+  border-left: 1px solid rgba(252,165,165,0.4);
+  border-right: 1px solid rgba(252,165,165,0.4);
+  padding: 0 12px;
+}
+
+/* Shared labels */
+.im-panel-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: #374151;
+  text-align: center;
+}
+.im-panel-sub {
+  font-size: 10px;
+  color: #6b7280;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Stat boxes — used across many scenes */
+.im-stat-box {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 7px 12px;
+  text-align: center;
+  width: 100%;
+  max-width: 140px;
+}
+.im-stat-box--hi { border-color: #34d399; background: rgba(236,253,245,0.8); }
+.im-stat-box--warn { border-color: #fbbf24; background: rgba(255,251,235,0.8); }
+.im-stat-box--danger { border-color: #f87171; background: rgba(254,242,242,0.8); }
+.im-stat-box__num {
+  font-size: 18px;
+  font-weight: 900;
+  color: #7f1d1d;
+  line-height: 1.1;
+}
+.im-stat-box--hi .im-stat-box__num { color: #065f46; }
+.im-stat-box--warn .im-stat-box__num { color: #92400e; }
+.im-stat-box__label {
+  font-size: 9px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   COMPLAINT SCENE
+   ============================================================ */
+.im-capitol-big { font-size: 52px; line-height: 1; }
+
+.im-wbdoc {
+  background: #fff;
+  border: 2px solid #fca5a5;
+  border-radius: 8px;
+  padding: 10px 14px;
+  width: 100%;
+  max-width: 180px;
+}
+.im-wbdoc__stamp {
+  font-size: 10px;
+  font-weight: 800;
+  color: #dc2626;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.im-wbdoc__line {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin: 4px 0;
+}
+.im-wbdoc__line--short { width: 60%; }
+.im-wbdoc__classified {
+  font-size: 9px;
+  font-weight: 800;
+  color: #991b1b;
+  text-align: center;
+  border: 1px solid #fca5a5;
+  border-radius: 3px;
+  padding: 2px 4px;
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   INVESTIGATION SCENE
+   ============================================================ */
+.im-inv-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.im-inv-figure__head {
+  width: 24px; height: 24px;
+  background: #fde68a;
+  border-radius: 50%;
+  border: 2px solid #d97706;
+}
+.im-inv-figure__body {
+  width: 28px; height: 38px;
+  background: #1e3a5f;
+  border-radius: 4px 4px 0 0;
+}
+
+.im-subpoena-fan {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 160px;
+  align-items: center;
+}
+.im-sfan__doc {
+  background: #fff;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #7f1d1d;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.im-sfan__doc--1 { transform: rotate(1deg); }
+.im-sfan__doc--2 { transform: rotate(-1.5deg); }
+.im-sfan__doc--3 { transform: rotate(0.5deg); }
+
+.im-stonewall-icon { font-size: 40px; }
+
+/* ============================================================
+   PUBLIC HEARINGS SCENE
+   ============================================================ */
+.im-hdais {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  max-width: 200px;
+  background: #e2e8f0;
+  padding: 8px;
+  border-radius: 8px;
+}
+.im-hdais__member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.im-hdais__head {
+  width: 14px; height: 14px;
+  background: #fde68a;
+  border-radius: 50%;
+}
+.im-hdais__body {
+  width: 16px; height: 20px;
+  background: #1e3a5f;
+  border-radius: 2px;
+}
+.im-hdais__label {
+  font-size: 9px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.im-hwitness {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-top: 6px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 16px;
+}
+.im-hwitness__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.im-hwitness__head {
+  width: 18px; height: 18px;
+  background: #fde68a;
+  border-radius: 50%;
+  border: 2px solid #d97706;
+}
+.im-hwitness__body {
+  width: 22px; height: 28px;
+  background: #374151;
+  border-radius: 3px 3px 0 0;
+}
+.im-hwitness__mic { font-size: 18px; }
+.im-hwitness__label {
+  font-size: 9px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* ============================================================
+   ARTICLES SCENE
+   ============================================================ */
+.im-const-book { font-size: 48px; line-height: 1; }
+.im-const-clause {
+  font-size: 14px;
+  font-weight: 800;
+  color: #92400e;
+  margin-top: 2px;
+}
+.im-const-quote {
+  font-size: 10px;
+  color: #6b7280;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.im-article-doc {
+  background: #fff;
+  border: 2px solid #fca5a5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 190px;
+  position: relative;
+}
+.im-article-doc__title {
+  font-size: 9px;
+  font-weight: 800;
+  color: #7f1d1d;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+.im-article-doc__line {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin: 5px 0;
+}
+.im-article-doc__line--short { width: 55%; }
+.im-article-doc__pen {
+  font-size: 22px;
+  position: absolute;
+  bottom: -8px;
+  right: -4px;
+  transform: rotate(-30deg);
+  animation: im-pen-write 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   COMMITTEE VOTE SCENE
+   ============================================================ */
+.im-cmember-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  max-width: 160px;
+}
+.im-cmember {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.im-cmember--dem { background: #3b82f6; }
+.im-cmember--rep { background: #ef4444; }
+.im-cmember--undecided { background: #f59e0b; }
+
+.im-big-tally {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.im-big-tally__yes {
+  font-size: 48px;
+  font-weight: 900;
+  color: #15803d;
+  line-height: 1;
+}
+.im-big-tally__no {
+  font-size: 48px;
+  font-weight: 900;
+  color: #dc2626;
+  line-height: 1;
+}
+.im-big-tally__label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #374151;
+  letter-spacing: 1px;
+}
+.im-big-tally__vs {
+  font-size: 24px;
+  color: #9ca3af;
+  margin: 0 4px;
+  align-self: center;
+}
+.im-undecided-badge {
+  background: #fef3c7;
+  border: 1px solid #fbbf24;
+  color: #92400e;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 3px 10px;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   HOUSE VOTE SCENE
+   ============================================================ */
+.im-whip-row-big {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.im-whip-big {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+}
+.im-whip-big--yes { color: #15803d; }
+.im-whip-big--soft { color: #f59e0b; }
+.im-whip-big--gop { color: #991b1b; }
+.im-whip-lbl {
+  font-size: 10px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.im-hvote-board {
+  background: #1e3a5f;
+  border-radius: 10px;
+  padding: 14px 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 200px;
+}
+.im-hvote-board__title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #93c5fd;
+  margin-bottom: 8px;
+}
+.im-hvote-board__row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.im-hvote-board__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.im-hvote-board__num {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+.im-hvote-board__lbl {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.im-hvote-board__col--yea .im-hvote-board__num { color: #4ade80; }
+.im-hvote-board__col--yea .im-hvote-board__lbl { color: #4ade80; }
+.im-hvote-board__col--nay .im-hvote-board__num { color: #f87171; }
+.im-hvote-board__col--nay .im-hvote-board__lbl { color: #f87171; }
+.im-hvote-board__threshold {
+  font-size: 9px;
+  color: #93c5fd;
+  margin-top: 6px;
+}
+
+/* ============================================================
+   SENATE TRIAL SCENE
+   ============================================================ */
+.im-trial-team {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.im-trial-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.im-trial-figure__head {
+  width: 18px; height: 18px;
+  background: #fde68a;
+  border-radius: 50%;
+  border: 2px solid #d97706;
+}
+.im-trial-figure__body {
+  width: 22px; height: 30px;
+  border-radius: 3px 3px 0 0;
+}
+.im-trial-figure__body--dem { background: #1e3a5f; }
+.im-trial-figure__body--rep { background: #7f1d1d; }
+
+.im-cj-big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.im-cj-big__head {
+  width: 24px; height: 24px;
+  background: #fde68a;
+  border-radius: 50%;
+  border: 2px solid #d97706;
+}
+.im-cj-big__robe {
+  width: 32px; height: 44px;
+  background: #1f2937;
+  border-radius: 6px 6px 0 0;
+}
+
+.im-senate-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  max-width: 130px;
+  margin-top: 4px;
+}
+.im-sdot {
+  width: 11px; height: 11px;
+  background: #e5e7eb;
+  border-radius: 50%;
+  border: 1px solid #9ca3af;
+}
+
+/* ============================================================
+   SENATE DELIBERATION SCENE
+   ============================================================ */
+.im-delib-count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.im-delib-num {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+}
+.im-delib-num--yes { color: #15803d; }
+.im-delib-num--no { color: #dc2626; }
+.im-delib-num--unk { color: #f59e0b; }
+.im-delib-lbl {
+  font-size: 10px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.im-gap-visual {
+  width: 100%;
+  max-width: 200px;
+}
+.im-gap-visual__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.im-gap-visual__bar {
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  position: relative;
+  overflow: visible;
+}
+.im-gap-visual__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7f1d1d, #dc2626);
+  border-radius: 8px;
+}
+.im-gap-visual__marker {
+  position: absolute;
+  top: -5px;
+  left: 67%;
+  width: 2px;
+  height: 26px;
+  background: #374151;
+  font-size: 9px;
+  font-weight: 700;
+  color: #374151;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 0;
+}
+.im-gap-visual__marker span {
+  position: absolute;
+  top: -13px;
+  left: 4px;
+  white-space: nowrap;
+}
+.im-gap-visual__current {
+  font-size: 10px;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.im-undecided-senator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+  padding: 4px 10px;
+  width: 100%;
+  max-width: 130px;
+  position: relative;
+}
+.im-undecided-senator__head {
+  width: 18px; height: 18px;
+  background: #fde68a;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.im-undecided-senator__body {
+  width: 22px; height: 28px;
+  background: #6b7280;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.im-undecided-senator__q {
+  font-size: 18px;
+  font-weight: 900;
+  color: #f59e0b;
+}
+
+/* ============================================================
+   SENATE VOTE SCENE
+   ============================================================ */
+.im-rollcall-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  max-width: 160px;
+}
+.im-rollcall__entry {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.im-rollcall__entry--guilty {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.im-rollcall__entry--acquit {
+  background: #e0f2fe;
+  color: #1e3a5f;
+}
+
+.im-svote-bar-wrap {
+  width: 100%;
+  max-width: 150px;
+}
+.im-svote-bar {
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  position: relative;
+  overflow: visible;
+  margin-bottom: 4px;
+}
+.im-svote-bar__fill {
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, #7f1d1d, #dc2626);
+  border-radius: 8px;
+  animation: im-bar-grow 2s ease-out forwards;
+}
+.im-svote-bar__marker {
+  position: absolute;
+  top: -5px;
+  left: 67%;
+  width: 2px;
+  height: 26px;
+  background: #374151;
+}
+.im-svote-bar__marker span {
+  position: absolute;
+  top: -13px;
+  left: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #374151;
+  white-space: nowrap;
+}
+.im-svote-bar__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #9ca3af;
+}

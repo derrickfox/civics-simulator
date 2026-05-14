@@ -6,6 +6,9 @@ const choiceMeta = {
   'let-record-speak':        { icon: '📁', tags: [{ label: '+Integrity', color: 'green' }, { label: '+Evidence', color: 'blue' }] },
 };
 
+const DEM_SEATS = 24;
+const REP_SEATS = 16;
+
 export default function HouseDebateScene({ stage, onChoiceSelect }) {
   const [phase, setPhase] = useState(0);
   const [selectedId, setSelectedId] = useState(null);
@@ -18,28 +21,50 @@ export default function HouseDebateScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-debate-stage">
-        {/* House floor */}
-        <div className="im-house-floor">
-          <div className="im-house__speaker-podium">
-            <div className="im-speaker__figure">
-              <div className="im-speaker__head"/>
-              <div className="im-speaker__body"/>
-            </div>
-            <div className="im-speaker__podium-stand"/>
+        {/* Speaker podium */}
+        <div className="im-podium-section">
+          <div className="im-podium__figure">
+            <div className="im-podium__head"/>
+            <div className="im-podium__body"/>
           </div>
-          <div className="im-house__seats">
-            {[0,1,2,3,4,5,6,7].map(i => (
-              <div key={i} className={`im-house__seat im-house__seat--${i % 2 === 0 ? 'dem' : 'rep'}`}>
-                <div className="im-house__head"/>
-              </div>
+          <div className="im-podium__stand"/>
+          <div className="im-podium__label">Speaker</div>
+        </div>
+
+        {/* House chamber seats — two parties */}
+        <div className="im-chamber-seats">
+          <div className="im-chamber-seats__label">U.S. HOUSE OF REPRESENTATIVES</div>
+          <div className="im-chamber-seats__grid">
+            {Array.from({ length: DEM_SEATS }).map((_, i) => (
+              <div key={`d${i}`} className="im-seat im-seat--dem"/>
+            ))}
+            {Array.from({ length: REP_SEATS }).map((_, i) => (
+              <div key={`r${i}`} className="im-seat im-seat--rep"/>
             ))}
           </div>
-          <div className="im-house__nameplate">U.S. HOUSE OF REPRESENTATIVES</div>
+          <div className="im-chamber-seats__legend">
+            <span className="im-legend__dem">● Dem</span>
+            <span className="im-legend__rep">● Rep</span>
+          </div>
         </div>
-        {/* C-SPAN badge */}
+
+        {/* Stat column */}
+        <div className="im-debate-stats">
+          <div className="im-debate-stat">
+            <div className="im-debate-stat__num">435</div>
+            <div className="im-debate-stat__label">Members voting</div>
+          </div>
+          <div className="im-debate-stat">
+            <div className="im-debate-stat__num">218</div>
+            <div className="im-debate-stat__label">Needed to pass</div>
+          </div>
+          <div className="im-debate-stat im-debate-stat--live">
+            <div className="im-debate-stat__num">12h</div>
+            <div className="im-debate-stat__label">Floor debate</div>
+          </div>
+        </div>
+
         <div className="im-cspan-badge">📺 C-SPAN LIVE</div>
-        {/* Timer */}
-        <div className="im-debate-timer">⏱️ 12 hours of debate</div>
       </div>
 
       <div className={`ci-story${phase >= 1 ? ' ci-story--visible' : ''}`}>

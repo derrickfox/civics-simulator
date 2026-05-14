@@ -6,6 +6,8 @@ const choiceMeta = {
   'balanced-hearings':   { icon: '⚖️', tags: [{ label: '+Integrity', color: 'green' }, { label: '+Bipartisan', color: 'blue' }] },
 };
 
+const MEMBER_COUNT = 12;
+
 export default function PublicHearingsScene({ stage, onChoiceSelect }) {
   const [phase, setPhase] = useState(0);
   const [selectedId, setSelectedId] = useState(null);
@@ -18,27 +20,57 @@ export default function PublicHearingsScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-hearing-stage">
-        {/* Hearing room */}
-        <div className="im-hearing-room">
-          <div className="im-hearing__dais">
-            {[0,1,2,3,4].map(i => (
-              <div key={i} className="im-hearing__member">
-                <div className="im-hearing__head"/>
-                <div className="im-hearing__body"/>
+        {/* Left: Viewer stats */}
+        <div className="im-scene-panel">
+          <div className="im-stat-box im-stat-box--hi">
+            <div className="im-stat-box__num">50M</div>
+            <div className="im-stat-box__label">Viewers expected</div>
+          </div>
+          <div className="im-stat-box">
+            <div className="im-stat-box__num">📺</div>
+            <div className="im-stat-box__label">Broadcast live</div>
+          </div>
+          <div className="im-stat-box im-stat-box--warn">
+            <div className="im-stat-box__num">48h</div>
+            <div className="im-stat-box__label">News cycle impact</div>
+          </div>
+        </div>
+
+        {/* Center: Hearing room */}
+        <div className="im-scene-panel im-scene-panel--center">
+          {/* Dais */}
+          <div className="im-hdais">
+            {Array.from({ length: MEMBER_COUNT }).map((_, i) => (
+              <div key={i} className="im-hdais__member">
+                <div className="im-hdais__head"/>
+                <div className="im-hdais__body"/>
               </div>
             ))}
           </div>
-          <div className="im-hearing__witness-table">
-            <div className="im-witness">
-              <div className="im-witness__head"/>
-              <div className="im-witness__body"/>
-              <div className="im-witness__mic">🎙️</div>
+          <div className="im-hdais__label">Committee Members</div>
+          {/* Witness */}
+          <div className="im-hwitness">
+            <div className="im-hwitness__figure">
+              <div className="im-hwitness__head"/>
+              <div className="im-hwitness__body"/>
             </div>
-          </div>
-          <div className="im-hearing__cameras">
-            {[0,1].map(i=><div key={i} className="im-camera">📷</div>)}
+            <div className="im-hwitness__mic">🎙️</div>
+            <div className="im-hwitness__label">Witness under oath</div>
           </div>
         </div>
+
+        {/* Right: Evidence being built */}
+        <div className="im-scene-panel">
+          <div className="im-stat-box">
+            <div className="im-stat-box__num">📁</div>
+            <div className="im-stat-box__label">Documentary record</div>
+          </div>
+          <div className="im-stat-box im-stat-box--hi">
+            <div className="im-stat-box__num">1973</div>
+            <div className="im-stat-box__label">Watergate hearings<br/>turned public opinion</div>
+          </div>
+        </div>
+
         <div className="im-viewer-badge">📺 50M viewers expected</div>
       </div>
 

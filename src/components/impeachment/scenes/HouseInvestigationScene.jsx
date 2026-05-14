@@ -18,21 +18,40 @@ export default function HouseInvestigationScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-invest-stage">
-        {/* Investigation office */}
-        <div className="im-inv-office">
-          <div className="im-inv-office__desk"/>
-          <div className="im-inv-office__files">
-            {[0,1,2].map(i=><div key={i} className={`im-inv-file im-inv-file--${i}`}>📁</div>)}
+        {/* Left: Investigation office */}
+        <div className="im-scene-panel">
+          <div className="im-inv-figure">
+            <div className="im-inv-figure__head"/>
+            <div className="im-inv-figure__body"/>
           </div>
-          <div className="im-inv-office__screen">💻</div>
+          <div className="im-panel-label">Judiciary Committee</div>
+          <div className="im-panel-sub">Investigation launched</div>
         </div>
-        {/* Subpoena stack */}
-        <div className="im-subpoena-stack">
-          <div className="im-subpoena">📄 SUBPOENA</div>
-          <div className="im-subpoena im-subpoena--2">📄 SUBPOENA</div>
-          <div className="im-subpoena im-subpoena--3">📄 SUBPOENA</div>
+
+        {/* Center: Subpoena documents */}
+        <div className="im-scene-panel im-scene-panel--center">
+          <div className="im-subpoena-fan">
+            {['📄 SUBPOENA', '📄 SUBPOENA', '📄 SUBPOENA', '📄 SUBPOENA'].map((s, i) => (
+              <div key={i} className={`im-sfan__doc im-sfan__doc--${i}`}>{s}</div>
+            ))}
+          </div>
+          <div className="im-panel-label">Subpoenas Issued</div>
+          <div className="im-panel-sub">Witnesses & documents</div>
         </div>
-        {/* Stonewalling */}
+
+        {/* Right: White House stonewalling */}
+        <div className="im-scene-panel">
+          <div className="im-stonewall-icon">🚫</div>
+          <div className="im-stat-box im-stat-box--danger">
+            <div className="im-stat-box__num">0%</div>
+            <div className="im-stat-box__label">White House<br/>cooperation</div>
+          </div>
+          <div className="im-stat-box">
+            <div className="im-stat-box__num">Exec.<br/>Priv.</div>
+            <div className="im-stat-box__label">Claimed by WH</div>
+          </div>
+        </div>
+
         <div className="im-stonewall-badge">🚫 White House: No cooperation</div>
       </div>
 

@@ -18,40 +18,52 @@ export default function SenateTrialScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-senate-trial-stage">
-        {/* Senate chamber */}
-        <div className="im-senate-chamber">
-          <div className="im-senate__chief-justice">
-            <div className="im-cj__figure">
-              <div className="im-cj__head"/>
-              <div className="im-cj__robe"/>
-            </div>
-            <div className="im-cj__label">Chief Justice presiding</div>
-          </div>
-          <div className="im-senate__managers">
-            <div className="im-managers__label">House Managers</div>
-            {[0,1,2].map(i => (
-              <div key={i} className="im-manager">
-                <div className="im-manager__head"/>
-                <div className="im-manager__body"/>
+        {/* Left: Prosecution */}
+        <div className="im-scene-panel">
+          <div className="im-trial-team">
+            {[0, 1, 2].map(i => (
+              <div key={i} className="im-trial-figure">
+                <div className="im-trial-figure__head"/>
+                <div className="im-trial-figure__body im-trial-figure__body--dem"/>
               </div>
             ))}
           </div>
-          <div className="im-senate__defense">
-            <div className="im-defense__label">Defense Team</div>
-            {[0,1,2].map(i => (
-              <div key={i} className="im-manager im-manager--defense">
-                <div className="im-manager__head"/>
-                <div className="im-manager__body"/>
+          <div className="im-panel-label">House Managers</div>
+          <div className="im-panel-sub">Prosecution</div>
+        </div>
+
+        {/* Center: Chief Justice + Senate */}
+        <div className="im-scene-panel im-scene-panel--center">
+          <div className="im-cj-big">
+            <div className="im-cj-big__head"/>
+            <div className="im-cj-big__robe"/>
+          </div>
+          <div className="im-panel-label">Chief Justice Presiding</div>
+          <div className="im-senate-dots">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <div key={i} className="im-sdot"/>
+            ))}
+          </div>
+          <div className="im-panel-sub">100 Senators as jury</div>
+        </div>
+
+        {/* Right: Defense + threshold */}
+        <div className="im-scene-panel">
+          <div className="im-trial-team">
+            {[0, 1, 2].map(i => (
+              <div key={i} className="im-trial-figure">
+                <div className="im-trial-figure__head"/>
+                <div className="im-trial-figure__body im-trial-figure__body--rep"/>
               </div>
             ))}
           </div>
+          <div className="im-panel-label">Defense Team</div>
+          <div className="im-stat-box im-stat-box--danger" style={{ marginTop: 10 }}>
+            <div className="im-stat-box__num">67</div>
+            <div className="im-stat-box__label">Votes needed<br/>to convict</div>
+          </div>
         </div>
-        {/* Senate gallery */}
-        <div className="im-senate__gallery">
-          {[0,1,2,3,4,5,6,7,8,9].map(i => (
-            <div key={i} className="im-senator-dot"/>
-          ))}
-        </div>
+
         <div className="im-trial-badge">⚖️ 67 votes needed to convict</div>
       </div>
 

@@ -18,26 +18,42 @@ export default function ArticlesScene({ stage, onChoiceSelect }) {
   return (
     <div className="ci-scene">
       <div className="ci-scene__stage im-articles-stage">
-        {/* Drafting table */}
-        <div className="im-drafting-table">
-          <div className="im-draft__surface"/>
-          <div className="im-draft__doc">
-            <div className="im-draft__title">ARTICLES OF IMPEACHMENT</div>
-            <div className="im-draft__line"/>
-            <div className="im-draft__line im-draft__line--short"/>
-            <div className="im-draft__pen">✍️</div>
-          </div>
-          {/* Legal books */}
-          <div className="im-draft__books">
-            <div className="im-book im-book--1">📚</div>
-            <div className="im-book im-book--2">⚖️</div>
-          </div>
+        {/* Left: Constitution */}
+        <div className="im-scene-panel">
+          <div className="im-const-book">📜</div>
+          <div className="im-panel-label">U.S. Constitution</div>
+          <div className="im-const-clause">Art. II, §4</div>
+          <div className="im-const-quote">"High Crimes and<br/>Misdemeanors"</div>
         </div>
-        {/* Constitution */}
-        <div className="im-constitution">
-          <div className="im-constitution__cover">📜 Constitution</div>
-          <div className="im-constitution__clause">Art. II, §4</div>
-          <div className="im-constitution__text">"High Crimes and Misdemeanors"</div>
+
+        {/* Center: Draft document */}
+        <div className="im-scene-panel im-scene-panel--center">
+          <div className="im-article-doc">
+            <div className="im-article-doc__title">ARTICLES OF IMPEACHMENT</div>
+            <div className="im-article-doc__line"/>
+            <div className="im-article-doc__line"/>
+            <div className="im-article-doc__line im-article-doc__line--short"/>
+            <div className="im-article-doc__line"/>
+            <div className="im-article-doc__line im-article-doc__line--short"/>
+            <div className="im-article-doc__pen">✍️</div>
+          </div>
+          <div className="im-panel-label">Drafting the charges</div>
+        </div>
+
+        {/* Right: Legal stakes */}
+        <div className="im-scene-panel">
+          <div className="im-stat-box im-stat-box--danger">
+            <div className="im-stat-box__num">⚖️</div>
+            <div className="im-stat-box__label">Every word on trial<br/>in the Senate</div>
+          </div>
+          <div className="im-stat-box im-stat-box--warn">
+            <div className="im-stat-box__num">Scope</div>
+            <div className="im-stat-box__label">Too broad = dismissed<br/>Too narrow = incomplete</div>
+          </div>
+          <div className="im-stat-box">
+            <div className="im-stat-box__num">📚</div>
+            <div className="im-stat-box__label">Legal scholars will<br/>scrutinize every clause</div>
+          </div>
         </div>
       </div>
 
