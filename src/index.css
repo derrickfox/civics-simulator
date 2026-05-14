@@ -9921,7 +9921,64 @@ button {
 .rd-metric--bi       { --rd-m-color: #065f46; }
 
 /* --- Card bar (RedistrictingCard) --- */
-.rd-card { margin: 8px 0; }
+.rd-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #86efac;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+.rd-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.rd-card__badge {
+  background: #14532d;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 7px;
+  letter-spacing: 0.5px;
+}
+.rd-card__title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #14532d;
+}
+.rd-card__stage {
+  font-size: 11px;
+  color: #374151;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.rd-card__metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  margin-bottom: 8px;
+}
+.rd-card__metric {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+}
+.rd-card__metric-label { color: #6b7280; flex: 1; }
+.rd-card__metric-val {
+  font-weight: 700;
+  color: #14532d;
+  min-width: 24px;
+  text-align: right;
+}
+.rd-card__vote-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 3px;
+}
 .rd-vote-bar {
   height: 14px;
   background: #e5e7eb;
@@ -9939,6 +9996,7 @@ button {
 .rd-vote-bar__threshold {
   position: absolute;
   top: -4px;
+  left: 52%;
   width: 2px;
   height: 22px;
   background: #374151;
