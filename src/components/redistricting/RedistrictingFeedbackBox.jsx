@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function RedistrictingFeedbackBox({ feedback, onContinue, isLastStage }) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setVisible(true), 50); return () => clearTimeout(t); }, []);
   if (!feedback) return null;
   return (
-    <div className="ci-feedback">
-      <h3 className="ci-feedback__title">What Happened</h3>
-      <p className="ci-feedback__text">{feedback.text}</p>
+    <div className={`feedback-box card${visible ? ' feedback-box--visible' : ''}`}>
+      <div className="feedback-box__header">
+        <span className="feedback-box__icon">🗺️</span>
+        <h3 className="feedback-box__title">What Happened</h3>
+      </div>
+      <p className="feedback-box__text">{feedback.text}</p>
       {feedback.changes?.length > 0 && (
-        <div className="ci-feedback__changes">
-          <div className="ci-feedback__changes-label">CASE IMPACT:</div>
-          <div className="ci-feedback__tags">
+        <div className="feedback-box__changes">
+          <p className="feedback-box__changes-title">Case Impact:</p>
+          <div className="feedback-box__change-list">
             {feedback.changes.map(({ label, delta }) => (
-              <span key={label} className={`ci-feedback__tag ci-feedback__tag--${delta > 0 ? 'pos' : 'neg'}`}>
+              <span
+                key={label}
+                className={`feedback-change ${delta > 0 ? 'change--good' : 'change--bad'}`}
+              >
                 {label}: {delta > 0 ? '+' : ''}{delta}
               </span>
             ))}
           </div>
         </div>
       )}
-      <button className="btn btn--primary ci-feedback__btn" onClick={onContinue}>
+      <button className="btn btn--primary feedback-box__continue" onClick={onContinue}>
         {isLastStage ? 'See Outcome →' : 'Continue →'}
       </button>
     </div>
