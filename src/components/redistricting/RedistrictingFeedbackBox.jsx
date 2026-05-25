@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
+// AI_CHANGE:
+// Tool: Claude Code
+// Model: Claude Opus 4.7
+// Timestamp: 2026-05-25T19:58:18-04:00
+// Purpose: Replaces the unstyled `ci-feedback__*` class prefix with the shared `feedback-box` classes used by every other module's FeedbackBox.
+// Reason: The `ci-feedback__*` classes had no matching CSS, so the "What Happened" panel rendered without a card, padding, or pill spacing. Aligning with the shared component class names restores the styling and adds the fade-in animation for free.
 export default function RedistrictingFeedbackBox({ feedback, onContinue, isLastStage }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => { const t = setTimeout(() => setVisible(true), 50); return () => clearTimeout(t); }, []);
