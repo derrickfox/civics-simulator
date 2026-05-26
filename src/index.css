@@ -271,6 +271,13 @@ button {
   align-items: flex-start;
   gap: 0;
   overflow-x: auto;
+  /* AI_CHANGE:
+     Tool: Claude Code
+     Model: Claude Opus 4.7
+     Timestamp: 2026-05-25T19:58:18-04:00
+     Purpose: Adds padding-top so the active stage node's pulse ring isn't clipped.
+     Reason: overflow-x: auto forces overflow-y to also clip, and the pulse ring scales to 1.6× via @keyframes pulse-ring; without top padding it sliced the top of the active token in every lesson. */
+  padding-top: 14px;
   padding-bottom: 8px;
   scrollbar-width: thin;
 }
