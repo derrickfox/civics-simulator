@@ -10167,6 +10167,117 @@ button {
 .rd-gv-dot--you { background: #14532d; }
 .rd-gv-dot--opp { background: #ef4444; }
 
+/* AI_CHANGE:
+   Tool: Claude Code
+   Model: Claude Opus 4.7
+   Timestamp: 2026-05-25T19:58:18-04:00
+   Purpose: Adds playful entry + loop animations for the First Draft scene — pencil wiggle, packing/cracking dot motion, map paint-in, stat pop, title underline.
+   Reason: User wants the graphics throughout the app to feel more alive; this is the pilot scene. Style stays plain but motion communicates the tactics and the cartographer-at-work metaphor. */
+
+/* Pencil "writing" wiggle — loops to suggest the cartographer is at work */
+.rd-draft-pencil {
+  font-size: 42px;
+  display: inline-block;
+  transform-origin: 70% 90%;
+  animation: rd-pencil-write 2.6s ease-in-out infinite;
+}
+@keyframes rd-pencil-write {
+  0%, 100% { transform: rotate(-14deg) translateY(0); }
+  20%      { transform: rotate(10deg)  translateY(-2px); }
+  40%      { transform: rotate(-6deg)  translateY(1px); }
+  60%      { transform: rotate(8deg)   translateY(-1px); }
+  80%      { transform: rotate(-4deg)  translateY(0); }
+}
+
+/* Packing — opposition dots huddle inward, your dots drift outward */
+.rd-gerry-visual--pack .rd-gv-dot--opp {
+  animation: rd-dot-pack-in 2.8s ease-in-out infinite;
+}
+.rd-gerry-visual--pack .rd-gv-dot--opp:nth-child(1) { animation-delay:   0ms; }
+.rd-gerry-visual--pack .rd-gv-dot--opp:nth-child(2) { animation-delay:  80ms; }
+.rd-gerry-visual--pack .rd-gv-dot--opp:nth-child(3) { animation-delay: 160ms; }
+.rd-gerry-visual--pack .rd-gv-dot--opp:nth-child(4) { animation-delay: 240ms; }
+.rd-gerry-visual--pack .rd-gv-dot--opp:nth-child(5) { animation-delay: 320ms; }
+.rd-gerry-visual--pack .rd-gv-dot--opp:nth-child(6) { animation-delay: 400ms; }
+.rd-gerry-visual--pack .rd-gv-dot--opp:nth-child(7) { animation-delay: 480ms; }
+.rd-gerry-visual--pack .rd-gv-dot--you {
+  animation: rd-dot-pack-out 2.8s ease-in-out infinite;
+}
+@keyframes rd-dot-pack-in {
+  0%, 100% { transform: translateX(0)    scale(1); }
+  50%      { transform: translateX(-3px) scale(1.18); }
+}
+@keyframes rd-dot-pack-out {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(5px); }
+}
+
+/* Cracking — opposition dots break apart in rhythm */
+.rd-gerry-visual--crack .rd-gv-dot--opp {
+  animation: rd-dot-crack 2.6s ease-in-out infinite;
+}
+.rd-gerry-visual--crack .rd-gv-dot--opp:nth-child(1) { animation-delay:   0ms; }
+.rd-gerry-visual--crack .rd-gv-dot--opp:nth-child(4) { animation-delay: 200ms; }
+.rd-gerry-visual--crack .rd-gv-dot--opp:nth-child(7) { animation-delay: 400ms; }
+@keyframes rd-dot-crack {
+  0%, 100% { transform: translateY(0)    scale(1);   opacity: 1;   }
+  50%      { transform: translateY(-5px) scale(0.65); opacity: 0.55; }
+}
+
+/* Map cells paint themselves in row-by-row on entry */
+.rd-draft-stage .rd-map-cell {
+  animation: rd-map-paint 0.45s ease-out backwards;
+  transition: transform 0.2s ease;
+}
+.rd-draft-stage .rd-map-row:nth-child(2) .rd-map-cell { animation-delay: 0.10s; }
+.rd-draft-stage .rd-map-row:nth-child(3) .rd-map-cell { animation-delay: 0.20s; }
+.rd-draft-stage .rd-map-row:nth-child(4) .rd-map-cell { animation-delay: 0.30s; }
+.rd-draft-stage .rd-map-row:nth-child(5) .rd-map-cell { animation-delay: 0.40s; }
+.rd-draft-stage .rd-map-row:nth-child(6) .rd-map-cell { animation-delay: 0.50s; }
+.rd-draft-stage .rd-map-cell:hover {
+  transform: scale(1.25) rotate(-4deg);
+  z-index: 1;
+}
+@keyframes rd-map-paint {
+  0%   { transform: scale(0);    opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+/* Pencil-stroke underline grows under the map title */
+.rd-draft-stage .rd-map-preview__title {
+  position: relative;
+  align-self: center;
+  width: fit-content;
+}
+.rd-draft-stage .rd-map-preview__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: #14532d;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: rd-underline 1s 0.55s ease-out forwards;
+}
+@keyframes rd-underline {
+  to { transform: scaleX(1); }
+}
+
+/* Stat boxes pop in with stagger */
+.rd-draft-stage .im-stat-box {
+  animation: rd-stat-pop 0.5s ease-out backwards;
+}
+.rd-draft-stage .im-scene-panel:last-child .im-stat-box:nth-child(1) { animation-delay: 0.40s; }
+.rd-draft-stage .im-scene-panel:last-child .im-stat-box:nth-child(2) { animation-delay: 0.55s; }
+.rd-draft-stage .im-scene-panel:last-child .im-stat-box:nth-child(3) { animation-delay: 0.70s; }
+@keyframes rd-stat-pop {
+  from { transform: translateX(20px) scale(0.92); opacity: 0; }
+  to   { transform: translateX(0)    scale(1);    opacity: 1; }
+}
+
 /* ============================================================
    VRA COMPLIANCE SCENE
    ============================================================ */

@@ -19,7 +19,13 @@ export default function FirstDraftScene({ stage, onChoiceSelect }) {
     <div className="ci-scene">
       <div className="ci-scene__stage rd-draft-stage">
         <div className="im-scene-panel">
-          <div style={{ fontSize: 42 }}>✏️</div>
+          {/* AI_CHANGE:
+              Tool: Claude Code
+              Model: Claude Opus 4.7
+              Timestamp: 2026-05-25T19:58:18-04:00
+              Purpose: Tag the pencil emoji so CSS can drive a continuous "writing" wiggle animation.
+              Reason: User asked for more playful graphics across scenes via animation; this is the first scene in the pilot. */}
+          <div className="rd-draft-pencil">✏️</div>
           <div className="im-panel-label">GERRYMANDERING TACTICS</div>
           <div className="rd-gerry-tactic">
             <div className="rd-gerry-tactic__name">PACKING</div>
